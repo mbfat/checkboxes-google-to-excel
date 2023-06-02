@@ -1,0 +1,14 @@
+https://stackoverflow.com/questions/43989400/excel-true-false-to-checked-boxes
+
+
+
+
+I strongly advise against using check boxes in Excel if you already have the data as TRUE/FALSE in a cell. Check box controls are meant to be for user forms, and even though they can be placed in the spreadsheet grid, they live in a layer on top of the spreadsheet. Yes, they can be linked to a spreadsheet cell, but this is cumbersome.
+Instead of using a macro that inserts a check box for each data row you could use a helper column with a formula along the lines of
+
+=IF(D3=TRUE, "a", "r")
+=IF([@checkBoxField],"a","r")
+
+Then format the helper column with the Marlett font, which will show the letter "a" as a tick and the letter "r" as a cross.
+enter image description here
+Applying a formula like this will be much faster than inserting check box controls into each row and linking them to the field cells.
